@@ -6,9 +6,20 @@ from textwrap import dedent
 
 ##dictionary, similar to an object
 items = {
-    "Wings" : 0
+    "Wings" : 0,
+    "Cookies" : 0,
+    "Spring Rolls" : 0,
+    "Salmon" : 0,
+    "Steak" : 0,
+    "Meat Tornado" : 0,
+    "A Literal Garden" : 0,
+    "Ice Cream" : 0,
+    "Cake" : 0,
+    "Pie" : 0,
+    "Coffee" : 0,
+    "Tea" : 0,
+    "Unicorn Tears" : 0,
 }
-
 
 def welcome():
     message = """
@@ -52,23 +63,30 @@ def show_menu():
     print(dedent(menu))
 
 def take_order():
+    print(dedent("""
+    ***********************************
+    ** What would you like to order? **
+    ***********************************
+    """))
     while True:
-        order = input( """
-        ***********************************
-        ** What would you like to order? **
-        ***********************************
-        """)
+        order=input()
         if order == 'quit':
             break
         
         # update items
-        items[order] += 1
+        # items[order] += 1
 
-        ## when user places an order
+        ## when user places an order           
         if order in items:
                 amount = items[order]
+                if amount ==0:
+                    print(f"\n** {amount + 1} order of {order} have been added to your meal **\n")
+                    items[order]+=1
+                if amount >=1:
+                    print(f"\n** {amount + 1} orders of {order} have been added to your meal **\n")
+                    items[order]+=1
+                
 
-        print(dedent(f"** {amount + 1}1 order of {order} have been added to your meal **"))
 
 def main():
     welcome()
